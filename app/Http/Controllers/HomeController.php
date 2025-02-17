@@ -12,4 +12,9 @@ class HomeController extends Controller
         $latest = \App\Models\Product::latest()->limit(4)->get();
         return view('home', compact('latest'));
     }
+
+    public function dashboard()
+    {
+        return view('account.dashboard');
+    }
 }

@@ -112,9 +112,6 @@
     </div>
 
 
-
-
-
     <!-- Optional JavaScript; choose one of the two! -->
 
     <!-- Option 1: Bootstrap Bundle with Popper -->
@@ -128,9 +125,10 @@
     @livewireScripts
 
     <script>
-        Livewire.on('cartUpdate', productId => {
+/*         Livewire.on('cartUpdate', productId => {
+            Livewire.emit('postAdded')
             alert('Cart Preview Needs Update');
-        })
+        }) */
     </script>
   </body>
 </html>

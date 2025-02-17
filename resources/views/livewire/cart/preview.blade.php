@@ -1,1 +1,3 @@
-<a class="btn btn-outline-primary" href="#">Cart({{ sizeof(session('cart'))}})</a>
+<div>
+<a class="btn btn-outline-primary" href="{{ route('cart') }}">Cart ( {{ $count }} ) </a>
+</div>

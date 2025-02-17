@@ -77,5 +77,13 @@ class User extends Authenticatable
 /*         return $this->roles()->with('permissions')->get()->pluck('permissions')->flatten()->pluck('name')->unique();
  */
         return $this->roles->map->permissions->flatten()->pluck('name')->unique();
- }
+    }
+
+    public function orders(){
+        return $this->hasMany(\App\Models\Order::class);
+    }
+
+    public function cart(){
+        return $this->hasMany(\App\Models\Cart::class);
+    }
 }
