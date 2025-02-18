@@ -20,4 +20,8 @@ class Product extends Model
     public function images(){
         return $this->hasMany(\App\Models\Image::class);
     }
+
+    public function carts(){
+        return $this->hasMany(\App\Models\Cart::class);
+    }
 }

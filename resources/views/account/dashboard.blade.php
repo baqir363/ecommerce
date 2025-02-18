@@ -10,7 +10,12 @@
             </div>
             <div class="card-body">
                 @forelse (Auth::user()->orders as $order)
-                    {{ $order->id }}
+                    <span class="badge rounded-pill bg-info text-dark">{{ $order->status}}</span>
+                    Order Id : {{ $order->id }}, Amount {{ $order->amount }},
+                    @foreach ($order->items as $item)
+                        {{ $item->product_id}}
+                    @endforeach
+                    <hr>
                 @empty
                     <div class="text-dark">You dont hava any orders. <br><a class="btn btn-sm btn-primary" href="{{ url('/')}}">Shop Now</a><br>to create your first order</div>
                 @endforelse

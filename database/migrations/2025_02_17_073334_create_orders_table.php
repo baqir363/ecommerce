@@ -17,7 +17,18 @@ return new class extends Migration
             $table->float('subtotal', 8, 2);
             $table->float('amount', 8, 2);
             $table->float('discount', 8, 2);
-            $table->enum('status', ['pending','processed', 'shipped', 'delivered', 'cancelled','returned', 'refunded']);
+            $table->enum('payment_mode',['cod','online']);
+            $table->enum('status', ['pending','processed', 'shipped', 'delivered', 'cancelled','returned', 'refunded'])->default('pending');
+            $table->string('shipping_name');
+            $table->string('shipping_contact');
+            $table->string('shipping_address');
+            $table->string('shipping_city');
+            $table->string('shipping_pin');
+            $table->string('billing_name');
+            $table->string('billing_contact');
+            $table->string('billing_address');
+            $table->string('billing_city');
+            $table->string('billing_pin');
             $table->timestamps();
         });
     }

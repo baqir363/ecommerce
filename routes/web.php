@@ -2,7 +2,6 @@
 
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
-// use Illuminate\Support\Facades\Auth;
 
 
 Route::get('/', 'App\Http\Controllers\HomeController@index')->name('welcome');
@@ -10,7 +9,9 @@ Route::get('products', 'App\Http\Controllers\ProductController@list')->name('pro
 Route::get('products/{product}', 'App\Http\Controllers\ProductController@view')->name('product.view');
 
 Route::get('cart', 'App\Http\Controllers\CartController@index')->name('cart');
-Route::get('checkout', 'App\Http\Controllers\CartController@checkout')->name('checkout');
+Route::get('checkout', 'App\Http\Controllers\CartController@checkout')->middleware(['auth', 'verified'])->name('checkout');
+
+Route::post('placeorder', 'App\Http\Controllers\OrderController@store')->middleware(['auth', 'verified'])->name('order.store');
 
 
 Route::get('dashboard', 'App\Http\Controllers\HomeController@dashboard')->middleware(['auth', 'verified'])->name('dashboard');
