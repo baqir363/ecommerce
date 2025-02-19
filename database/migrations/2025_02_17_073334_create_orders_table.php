@@ -31,6 +31,15 @@ return new class extends Migration
             $table->string('billing_pin');
             $table->timestamps();
         });
+
+        Schema::create('order_product', function (Blueprint $table) {
+            $table->id();
+            $table->foreignId('order_id')->constrained();
+            $table->foreignId('product_id')->constrained();
+            $table->integer('quantity');
+            $table->float('selling_price', 8, 2);
+            $table->timestamps();
+        });
     }
 
     /**

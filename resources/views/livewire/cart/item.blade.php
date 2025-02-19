@@ -2,13 +2,13 @@
     <div class="row">
         <div class="col-2">
             <a href="{{ route('product.view', ['product'=>$product->slug]) }}">
-            @if(sizeof($product->images)>0)
-            <img src="{{ asset('storage/'.$product->images[0]->images)}}" class="rounded mx-auto d-block mw-100 mh-100" alt="">
-            @else
-                <div class="bg-secondary text-white text-center h-100">
-                    <h5>No Image</h5>
-                </div>
-            @endif
+                @if(sizeof($product->images)>0)
+                    <img src="{{ asset('storage/'.$product->images[0]->images)}}" class="rounded mx-auto d-block mw-100 mh-100" alt="">
+                @else
+                    <div class="bg-secondary text-white text-center h-100">
+                        <h5>No Image</h5>
+                    </div>
+                @endif
             </a>
         </div>
         <div class="col-5"><a href="{{ route('product.view', ['product'=>$product->slug]) }}"> {{ $product->name }} </a></div>

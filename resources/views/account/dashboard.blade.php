@@ -10,11 +10,18 @@
             </div>
             <div class="card-body">
                 @forelse (Auth::user()->orders as $order)
-                    <span class="badge rounded-pill bg-info text-dark">{{ $order->status}}</span>
-                    Order Id : {{ $order->id }}, Amount {{ $order->amount }},
-                    @foreach ($order->items as $item)
-                        {{ $item->product_id}}
-                    @endforeach
+                    <div class="row">
+                        <div class="col">
+                            <span class="badge rounded-pill bg-info text-dark">{{ $order->status}}</span>Order Id : {{ $order->id }}, Amount {{ $order->amount }},
+                            @foreach ($order->products as $product)
+                                <br>{{ $product->name }}
+                            @endforeach
+                        </div>
+                        <div class="col text-end">
+
+                    <i class="far fa-calendar text-primary"></i> {{ date("d-m-Y", strtotime($order->created_at))}}<i class="far fa-clock text-primary"></i> {{ date("h:i a", strtotime($order->created_at))}}
+                        </div>
+                    </div>
                     <hr>
                 @empty
                     <div class="text-dark">You dont hava any orders. <br><a class="btn btn-sm btn-primary" href="{{ url('/')}}">Shop Now</a><br>to create your first order</div>

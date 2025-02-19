@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\EasypaisaController;
 
 
 Route::get('/', 'App\Http\Controllers\HomeController@index')->name('welcome');
@@ -12,6 +13,16 @@ Route::get('cart', 'App\Http\Controllers\CartController@index')->name('cart');
 Route::get('checkout', 'App\Http\Controllers\CartController@checkout')->middleware(['auth', 'verified'])->name('checkout');
 
 Route::post('placeorder', 'App\Http\Controllers\OrderController@store')->middleware(['auth', 'verified'])->name('order.store');
+Route::view('orders', 'account.orders')->middleware(['auth', 'verified'])->name('orders');
+
+Route::get('payment/{order}', 'App\Http\Controllers\PaymentController@payment')->middleware(['auth', 'verified'])->name('payment.pay');
+Route::post('verify', 'App\Http\Controllers\PaymentController@verify')->middleware(['auth', 'verified'])->name('payment.verify');
+
+Route::get('payment/{order}', 'App\Http\Controllers\EasypaisaController@showPaymentPage')->middleware(['auth', 'verified'])->name('payment.view');
+Route::post('success', 'App\Http\Controllers\EasypaisaController@success')->middleware(['auth', 'verified'])->name('payment.success');
+// Route::get('payment', [EasypaisaController::class, 'showPaymentPage']);
+// Route::post('/easypaisa/initiate-payment', [EasypaisaController::class, 'initiatePayment']);
+// Route::get('/easypaisa/payment-response', [EasypaisaController::class, 'paymentResponse']);
 
 
 Route::get('dashboard', 'App\Http\Controllers\HomeController@dashboard')->middleware(['auth', 'verified'])->name('dashboard');

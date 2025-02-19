@@ -24,13 +24,13 @@
 
             <h5 class="mt-5">Payment Method</h5>
             <div class="form-check">
-                <input class="form-check-input" type="radio" name="payment_mode" id="cod" value="cod">
+                <input class="form-check-input" type="radio" name="payment_mode" id="cod" value="cod" checked>
                 <label class="form-check-label" for="cod">
                   Cash on Delivery
                 </label>
               </div>
               <div class="form-check">
-                <input class="form-check-input" type="radio" name="payment_mode" id="online" value="online" checked>
+                <input class="form-check-input" type="radio" name="payment_mode" id="online" value="online">
                 <label class="form-check-label" for="online">
                   Online Payment(card/Net Banking/UPI)
                 </label>

@@ -56,9 +56,14 @@ class OrderController extends Controller
 
         $order = Auth::user()->orders()->create($data);
 
-        $orderItem = $order->items()->createMany($items);
+        $orderItem = $order->products()->attach($items);
+
         $deleted = \App\Models\Cart::where('user_id', Auth::id())->delete();
         $request->session()->forget('cart');
-        return redirect(route('dashboard'));
+
+        if($request->payment_mode=='online'){
+            return redirect(route('payment.pay',['order'=>$order->id]));
+        }
+        return redirect(route('payment.view',['order'=>$order->id]));
     }
 }
