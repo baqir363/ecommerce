@@ -7,7 +7,7 @@
 
         <title>{{ config('app.name', 'Laravel') }}</title>
 
-        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
 
         <link rel="preconnect" href="https://fonts.googleapis.com">
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -34,7 +34,7 @@
 
             <ul class="nav flex-column">
                 <li class="nav-item">
-                  <a class="nav-link active" aria-current="page" href="#"><i class="fas fa-tachometer-alt fa-fw"></i>Dashboard</a>
+                  <a class="nav-link active" aria-current="page" href="{{ route('admin.dashboard') }}"><i class="fas fa-tachometer-alt fa-fw"></i>Dashboard</a>
                 </li>
                 <li class="nav-item">
                   <a class="nav-link" href="{{ route('category.index')}}"><i class="fas fa-box-open fa-fw"></i>Categories</a>
@@ -43,7 +43,7 @@
                   <a class="nav-link" href="{{ route('product.index')}}"><i class="fas fa-square fa-fw"></i>Products</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#"><i class="fas fa-list fa-fw"></i>Orders</a>
+                    <a class="nav-link" href="{{ route('order.index')}}"><i class="fas fa-list fa-fw"></i>Orders</a>
                   </li>
                   <li class="nav-item">
                     <a class="nav-link" href="{{ route('page.index')}}"><i class="fas fa-file fa-fw"></i>Pages</a>
@@ -55,14 +55,14 @@
                 <div class="row">
                     <div class="col p-3">
                         <a class="btn btn-secondary me-3" onclick="toggleNav()"><i class="fas fa-bars"></i></a>
-                        <a href="{{ url('/admin/page')}}">Admin</a>
+                        <a href="{{ route('admin.dashboard') }}">Admin</a>
                     </div>
                 </div>
             </div>
         </div>
         @yield('content')
 
-
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
         <script>
             function toggleNav(){
                 let currentMargin = document.getElementById('menu').style.marginLeft;

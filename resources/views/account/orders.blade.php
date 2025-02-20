@@ -6,7 +6,7 @@
 
         <div class="row">
             <div class="col-md-8">
-                @forelse (Auth::user()->orders as $order)
+                @forelse ($orders as $order)
                 <div class="card my-3">
                     <div class="card-header">
                         <div class="row">
@@ -48,5 +48,6 @@
             <div class="col-md-4"></div>
         </div>
 
+        {{ $orders->links() }}
     </div>
 @endsection

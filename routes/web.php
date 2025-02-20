@@ -13,7 +13,7 @@ Route::get('cart', 'App\Http\Controllers\CartController@index')->name('cart');
 Route::get('checkout', 'App\Http\Controllers\CartController@checkout')->middleware(['auth', 'verified'])->name('checkout');
 
 Route::post('placeorder', 'App\Http\Controllers\OrderController@store')->middleware(['auth', 'verified'])->name('order.store');
-Route::view('orders', 'account.orders')->middleware(['auth', 'verified'])->name('orders');
+Route::get('orders', 'App\Http\Controllers\OrderController@list')->middleware(['auth', 'verified'])->name('orders');
 
 Route::get('payment/{order}', 'App\Http\Controllers\PaymentController@payment')->middleware(['auth', 'verified'])->name('payment.pay');
 Route::post('verify', 'App\Http\Controllers\PaymentController@verify')->middleware(['auth', 'verified'])->name('payment.verify');
@@ -46,7 +46,9 @@ Route::middleware('auth')->group(function () {
 require __DIR__.'/auth.php';
 
 Route::prefix('admin')->middleware('can:admin-login')->group(function () {
+    Route::view('/', 'admin.dashboard')->name('admin.dashboard');
     Route::resource('page', 'App\Http\Controllers\PageController');
     Route::resource('category', 'App\Http\Controllers\CategoryController');
     Route::resource('product', 'App\Http\Controllers\ProductController');
+    Route::resource('order', 'App\Http\Controllers\OrderController');
 });

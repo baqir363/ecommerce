@@ -13,7 +13,16 @@ class Search extends Component
     {
         $products = [];
         if($this->search!=''){
-            $products = Product::where('name', 'like', '%'. $this->search. '%')->limit(6)->get();
+
+            $keyword = explode(' ', $this->search);
+
+            $products = Product::where('name', 'like', '%'. $this->search.'%');
+            if(sizeof($keyword)>1){
+                foreach($keyword as $val){
+                    $products = $products->orwhere('name', 'LIKE', '%'.$val.'%');
+                }
+            }
+            $products = $products->limit(6)->get();
         }
         return view('livewire.search', compact('products'));
         return view('livewire.search');

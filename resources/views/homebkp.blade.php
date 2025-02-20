@@ -29,7 +29,30 @@
                     </div>
                 </div>
                 <div class="col-md-6">
-
+                    <div id="secondary-slider" class="splide">
+                        <div class="splide__track">
+                            <ul class="splide__list">
+                                <li class="splide__slide">
+                                    01
+                                </li>
+                                <li class="splide__slide">
+                                    02
+                                </li>
+                                <li class="splide__slide">
+                                    03
+                                </li>
+                                <li class="splide__slide">
+                                    04
+                                </li>
+                                <li class="splide__slide">
+                                    05
+                                </li>
+                                <li class="splide__slide">
+                                    06
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>

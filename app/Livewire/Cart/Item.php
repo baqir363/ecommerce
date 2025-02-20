@@ -3,6 +3,7 @@
 namespace App\Livewire\Cart;
 use Illuminate\Http\Request;
 use Livewire\Component;
+use Illuminate\Support\Facades\Auth;
 
 class Item extends Component
 {
@@ -42,6 +43,8 @@ class Item extends Component
         $cart = session('cart');
         unset($cart[$this->productId]);
         $request->session()->put('cart', $cart);
+
+        $remove = \App\Models\Cart::where('user_id', Auth::id())->where('product_id', $this->productId)->delete();
         $this->dispatch('cartUpdate');
     }
 

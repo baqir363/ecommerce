@@ -68,43 +68,23 @@
         <div class="container">
             <footer class="pt-4 my-md-5 pt-md-5">
           <div class="row">
-            <div class="col-3">
-              <img class="mb-2" src="/docs/5.0/assets/brand/bootstrap-logo.svg" alt="" width="24" height="19">
-              <small class="d-block mb-3 text-muted">&copy; 2017–2021</small>
+            <div class="col-12 col-md">
+                <b>{{ config('app.name', 'Laravel') }}</b>
+              <small class="d-block mb-3 text-muted">&copy; 2025</small>
 
               Follow us at <br><br>
               <a target="_black" href="#"><i class="fab fa-facebook-square fa-2x"></i></a> &nbsp;
               <a target="_black" href="#"><i class="fab fa-twitter-square fa-2x"></i></a> &nbsp;
               <a target="_black" href="#"><i class="fab fa-youtube-square fa-2x"></i></a>
             </div>
-            <div class="col-3">
-              <h5>Features</h5>
-              <ul class="list-unstyled text-small">
-                <li><a class="link-secondary" href="#">Cool stuff</a></li>
-                <li><a class="link-secondary" href="#">Random feature</a></li>
-                <li><a class="link-secondary" href="#">Team feature</a></li>
-                <li><a class="link-secondary" href="#">Stuff for developers</a></li>
-                <li><a class="link-secondary" href="#">Another one</a></li>
-                <li><a class="link-secondary" href="#">Last time</a></li>
-              </ul>
+            <div class="col-6 col-md">
+                @livewire('menu.links', ['name'=>'Categories'])
             </div>
-            <div class="col-3">
-              <h5>Resources</h5>
-              <ul class="list-unstyled text-small">
-                <li><a class="link-secondary" href="#">Resource</a></li>
-                <li><a class="link-secondary" href="#">Resource name</a></li>
-                <li><a class="link-secondary" href="#">Another resource</a></li>
-                <li><a class="link-secondary" href="#">Final resource</a></li>
-              </ul>
+            <div class="col-6 col-md">
+                @livewire('menu.links', ['name'=>'Links'])
             </div>
-            <div class="col-3">
-              <h5>About</h5>
-              <ul class="list-unstyled text-small">
-                <li><a class="link-secondary" href="#">Team</a></li>
-                <li><a class="link-secondary" href="#">Locations</a></li>
-                <li><a class="link-secondary" href="#">Privacy</a></li>
-                <li><a class="link-secondary" href="#">Terms</a></li>
-              </ul>
+            <div class="col-6 col-md">
+                @livewire('menu.links', ['name'=>'Legals'])
             </div>
           </div>
             </footer>

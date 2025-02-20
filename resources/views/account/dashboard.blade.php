@@ -6,10 +6,11 @@
 
         <div class="card my-3">
             <div class="card-header">
+                <a href="{{ route('orders')}}" class="float-end">View All Orders</a>
                 Orders
             </div>
             <div class="card-body">
-                @forelse (Auth::user()->orders as $order)
+                @forelse (Auth::user()->orders->take(3) as $order)
                     <div class="row">
                         <div class="col">
                             <span class="badge rounded-pill bg-info text-dark">{{ $order->status}}</span>Order Id : {{ $order->id }}, Amount {{ $order->amount }},
@@ -34,7 +35,8 @@
                 My Address List
             </div>
             <div class="card-body">
-                ...
+
+            @livewire('user.address')
             </div>
         </div>
     </div>

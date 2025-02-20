@@ -3,12 +3,30 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Mail;
+use App\Mail\OrderCreated;
 use Illuminate\Support\Facades\Auth;
+use App\Models\Order;
 
 
 class OrderController extends Controller
 {
     //
+    public function index()
+    {
+        $limit = 4;
+        $orders = Order::paginate($limit);
+        return view('order.index', compact('orders'));
+    }
+
+    public function list()
+    {
+        $limit = 3;
+        $orders = Order::where('user_id',Auth::id())->latest()->paginate($limit);
+        return view('account.orders', compact('orders'));
+    }
+
+
     public function store(Request $request)
     {
         $validated = $request->validate([
@@ -60,6 +78,9 @@ class OrderController extends Controller
 
         $deleted = \App\Models\Cart::where('user_id', Auth::id())->delete();
         $request->session()->forget('cart');
+
+
+        Mail::to(Auth::user())->send(new OrderCreated($order));
 
         if($request->payment_mode=='online'){
             return redirect(route('payment.pay',['order'=>$order->id]));

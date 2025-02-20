@@ -1,17 +1,25 @@
-<div class="row">
-    @forelse (Auth::user()->address as $address)
-            <div class="col-md-4">
-                <input type="radio" name="shipping_address" value="{{ $address->id }}"><br>
-                {{ $address->name }}, {{ $address->contact }},<br>
-                {{ $address->line1 }},<br>
-                {{ $address->line2 }},<br>
+<div>
+    <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3">
+        @forelse (Auth::user()->address as $address)
+            <div class="col mb-3">
+                <div class="card border border-secondary">
+                    <div class="card-body">
+                        <input type="radio" name="shipping_address" value="{{ $address->id }}"><br>
+                        <b>{{ $address->name }}</b>,{{ $address->contact }},<br>
+                        {{ $address->line1 }},<br>
+                        {{ $address->line2 }}
+                        <br> <br>
+                        <a href="#" class="card-link"><i class="far fa-edit"></i>Edit</a>
+                        <a href="#" class="card-link text-danger"><i class="far fa-trash-alt"></i>Delete</a>
+                    </div>
+                </div>
             </div>
-    @empty
-        <div class="alert alert-danger">No address found for account.</div>
-    @endforelse
-
+        @empty
+            <div class="alert alert-danger">No address found for account.</div>
+        @endforelse
+    </div>
     @if($new)
-        <form wire:submit.prevent="save" class="row g-3 mb-5">
+        <form wire:submit.prevent="save" class="row g-3 my-3 border-top">
             <div class="col-md-6">
                 <label for="name" class="form-label">Name</label>
                 <input type="text" class="form-control" wire:model="name" id="name">
@@ -60,5 +68,5 @@
             </div>
         </form>
     @endif
-    <a wire:click="addNew" class="btn btn-secondary btn-sm">Add New Address</a>
+    <a wire:click="addNew" class="btn btn-sm btn-secondary my-3">Add New Address</a>
 </div>

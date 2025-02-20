@@ -80,7 +80,7 @@ class User extends Authenticatable
     }
 
     public function orders(){
-        return $this->hasMany(\App\Models\Order::class);
+        return $this->hasMany(\App\Models\Order::class)->latest();
     }
 
     public function cart(){
