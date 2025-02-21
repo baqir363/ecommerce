@@ -4,6 +4,8 @@ namespace App\Livewire\User;
 
 use Livewire\Component;
 use Illuminate\Support\Facades\Auth;
+use App\Models\State;
+use App\Models\City;
 
 class Address extends Component
 {
@@ -13,6 +15,9 @@ class Address extends Component
     public $line1;
     public $line2;
     public $zip;
+    public $country;
+    public $state;
+    public $city;
 
 
 
@@ -35,6 +40,11 @@ class Address extends Component
     }
     public function render()
     {
-        return view('livewire.user.address');
+         $states = \App\Models\State::where('country_id','167')->get();
+         $cities = array();
+         if($this->state){
+            $cities = \App\Models\City::where('state_id',$this->state)->get();
+         }
+        return view('livewire.user.address',compact('states','cities'));
     }
 }

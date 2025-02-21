@@ -45,10 +45,11 @@ Route::middleware('auth')->group(function () {
 
 require __DIR__.'/auth.php';
 
-Route::prefix('admin')->middleware('can:admin-login')->group(function () {
+Route::prefix('admin')->middleware(['auth','can:admin-login'])->group(function () {
     Route::view('/', 'admin.dashboard')->name('admin.dashboard');
     Route::resource('page', 'App\Http\Controllers\PageController');
     Route::resource('category', 'App\Http\Controllers\CategoryController');
     Route::resource('product', 'App\Http\Controllers\ProductController');
     Route::resource('order', 'App\Http\Controllers\OrderController');
+    Route::view('banners', 'admin.banners')->name('banners');
 });

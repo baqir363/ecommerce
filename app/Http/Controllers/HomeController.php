@@ -10,7 +10,10 @@ class HomeController extends Controller
     public function index()
     {
         $latest = \App\Models\Product::latest()->limit(4)->get();
-        return view('home', compact('latest'));
+        $banners = \App\Models\Banner::latest()->limit(4)->get();
+
+        $collections = \App\Models\Collection::get();
+        return view('home', compact('latest','banners','collections'));
     }
 
     public function dashboard()

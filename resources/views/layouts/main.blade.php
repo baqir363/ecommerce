@@ -58,7 +58,7 @@
           @livewire('cart.preview')
       </header>
       @livewire('search')
-      <main class="container" style="min-height: 300px;">
+      <main style="min-height: 300px;">
 
         @yield('content')
 

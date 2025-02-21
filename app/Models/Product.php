@@ -28,4 +28,7 @@ class Product extends Model
     public function orders(){
         return $this->belongsToMany(\App\Models\Product::class);
     }
+    public function collections(){
+        return $this->belongsToMany(\App\Models\Collection::class);
+    }
 }

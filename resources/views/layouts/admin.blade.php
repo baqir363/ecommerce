@@ -19,7 +19,7 @@
             font-weight: 400;
             font-style: normal;
                           }
-            a{text-decoration: none;}
+            a{text-decoration: none;cursor: pointer;}
         </style>
 
     <link rel="stylesheet" href="{{ asset('fontawesome/css/all.css')}}">
@@ -47,6 +47,9 @@
                   </li>
                   <li class="nav-item">
                     <a class="nav-link" href="{{ route('page.index')}}"><i class="fas fa-file fa-fw"></i>Pages</a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link" href="{{ route('banners')}}"><i class="fas fa-file fa-fw"></i>Banners</a>
                   </li>
               </ul>
         </div>

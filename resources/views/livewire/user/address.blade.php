@@ -39,17 +39,25 @@
                 <label for="line2" class="form-label">Address line 2</label>
                 <input type="text" class="form-control" wire:model="line2" id="line2" placeholder="Apartment, studio, or floor">
             </div>
-            <div class="col-md-6">
-                <label for="city" class="form-label">City</label>
-                <input type="text" class="form-control" id="city">
-            </div>
             <div class="col-md-4">
                 <label for="state" class="form-label">State</label>
-                <select id="state" class="form-select">
+                <select wire:model="state" wire:change="$refresh" id="state" class="form-select">
                     <option selected>Choose...</option>
-                    <option>...</option>
+                    @foreach ($states as $state)
+                        <option value="{{ $state->id}}">{{ $state->name }}</option>
+                    @endforeach
                 </select>
             </div>
+            <div class="col-md-6">
+                <label for="city" class="form-label">City</label>
+                <select wire:model="city" id="city" class="form-select">
+                    <option selected>Choose...</option>
+                    @foreach ($cities as $city)
+                        <option value="{{ $city->id}}">{{ $city->name }}</option>
+                    @endforeach
+                </select>
+            </div>
+
             <div class="col-md-2">
                 <label for="zip" class="form-label">Zip/Pin</label>
                 <input type="text" class="form-control" wire:model="zip" id="zip">
