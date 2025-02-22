@@ -2,10 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Category;
+use App\Models\Attribute;
 use Illuminate\Http\Request;
 
-class CategoryController extends Controller
+class AttributeController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -14,8 +14,8 @@ class CategoryController extends Controller
     {
         //
         $limit = 10;
-        $categories = Category::paginate($limit);
-        return view('category.index', compact('categories'));
+        $attributes = Attribute::paginate($limit);
+        return view('attribute.index', compact('attributes'));
     }
 
     /**
@@ -24,7 +24,7 @@ class CategoryController extends Controller
     public function create()
     {
         //
-        return view('category.create');
+        return view('attribute.create');
     }
 
     /**
@@ -37,14 +37,14 @@ class CategoryController extends Controller
             'name' => 'required|min:3',
         ]);
 
-        $category = Category::create($validated);
-        return redirect()->route('category.index');
+        $Attribute = Attribute::create($validated);
+        return redirect()->route('attribute.index');
     }
 
     /**
      * Display the specified resource.
      */
-    public function show(Category $category)
+    public function show(Attribute $Attribute)
     {
         //
     }
@@ -52,34 +52,34 @@ class CategoryController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(Category $category)
+    public function edit(Attribute $Attribute)
     {
         //
-        return view('category.edit',compact('category'));
+        return view('attribute.edit',compact('attribute'));
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, Category $category)
+    public function update(Request $request, Attribute $Attribute)
     {
         //
         $validated = $request->validate([
             'name' => 'required|min:3',
         ]);
 
-        $category->name = $request->name;
-        $category->save();
-        return redirect()->route('category.index');
+        $Attribute->name = $request->name;
+        $Attribute->save();
+        return redirect()->route('attribute.index');
     }
 
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(Category $category)
+    public function destroy(Attribute $Attribute)
     {
         //
-        $category->delete();
-        return redirect()->route('category.index');
+        $Attribute->delete();
+        return redirect()->route('attribute.index');
     }
 }

@@ -51,5 +51,6 @@ Route::prefix('admin')->middleware(['auth','can:admin-login'])->group(function (
     Route::resource('category', 'App\Http\Controllers\CategoryController');
     Route::resource('product', 'App\Http\Controllers\ProductController');
     Route::resource('order', 'App\Http\Controllers\OrderController');
+    Route::resource('attribute', 'App\Http\Controllers\AttributeController');
     Route::view('banners', 'admin.banners')->name('banners');
 });
