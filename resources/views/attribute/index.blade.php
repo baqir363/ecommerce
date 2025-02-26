@@ -12,15 +12,19 @@
                 <tr>
                     <th>Id</th>
                     <th> Name </th>
+                    <th>Values</th>
                     <th>Action</th>
                 </tr>
             </thead>
-            <tbody class="table table-bordered">
+            <tbody class="">
 
             @forelse ($attributes as $attribute)
                 <tr>
                     <td> {{ $attribute->id}} </td>
                     <td>{{ $attribute->name}}</td>
+                    <td>
+                        <a href="{{ route('attribute.values', ['attribute'=>$attribute->id]) }}">Values</a>
+                    </td>
                     <td><a class="btn btn-sm btn-info" href="{{ route('attribute.edit',['attribute'=>$attribute->id]) }} "><i class="fas fa-edit"></i> Edit</a>
                         <a class="btn btn-sm btn-danger" onclick="deleteCat({{ $attribute->id }})"><i class="fas fa-trash-alt"></i> Delete</a>
                     <form id="cat{{ $attribute->id }}" action="{{ route('attribute.destroy',['attribute'=>$attribute->id]) }}" method="POST">

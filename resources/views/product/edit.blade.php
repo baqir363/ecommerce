@@ -62,6 +62,10 @@
                                 <div class="text-danger">{{ $message }}</div>
                             @enderror
                         </div>
+                        <div class="mb-3">
+                            <label for="attributes">Attributes</label>
+                            <input type="text" name="attributes" class="form-control">
+                        </div>
                         <input class="btn btn-primary" type="submit" value="Update">
                 </form>
             </div>

@@ -15,7 +15,7 @@
                     <th>Action</th>
                 </tr>
             </thead>
-            <tbody class="table table-bordered">
+            <tbody class="">
 
             @forelse ($categories as $category)
                 <tr>

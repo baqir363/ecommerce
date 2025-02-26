@@ -77,6 +77,12 @@ class ProductController extends Controller
         return view('product.edit',compact('product','categories'));
     }
 
+    public function varients(Product $product)
+    {
+        //
+        return view('product.varients',compact('product'));
+    }
+
     /**
      * Update the specified resource in storage.
      */

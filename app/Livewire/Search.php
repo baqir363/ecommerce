@@ -25,6 +25,5 @@ class Search extends Component
             $products = $products->limit(6)->get();
         }
         return view('livewire.search', compact('products'));
-        return view('livewire.search');
     }
 }

@@ -21,6 +21,10 @@ class Product extends Model
         return $this->hasMany(\App\Models\Image::class);
     }
 
+    public function varients(){
+        return $this->hasMany(\App\Models\Varient::class);
+    }
+
     public function carts(){
         return $this->hasMany(\App\Models\Cart::class);
     }

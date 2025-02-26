@@ -49,8 +49,10 @@ Route::prefix('admin')->middleware(['auth','can:admin-login'])->group(function (
     Route::view('/', 'admin.dashboard')->name('admin.dashboard');
     Route::resource('page', 'App\Http\Controllers\PageController');
     Route::resource('category', 'App\Http\Controllers\CategoryController');
+    Route::get('varients/{product}', 'App\Http\Controllers\ProductController@varients')->name('product.varients');
     Route::resource('product', 'App\Http\Controllers\ProductController');
     Route::resource('order', 'App\Http\Controllers\OrderController');
+    Route::get('values/{attribute}', 'App\Http\Controllers\AttributeController@values')->name('attribute.values');
     Route::resource('attribute', 'App\Http\Controllers\AttributeController');
     Route::view('banners', 'admin.banners')->name('banners');
 });

@@ -49,6 +49,11 @@ class AttributeController extends Controller
         //
     }
 
+    public function values(Attribute $attribute)
+    {
+        return view('attribute.values', compact('attribute'));
+    }
+
     /**
      * Show the form for editing the specified resource.
      */
